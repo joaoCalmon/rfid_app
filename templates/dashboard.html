@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+
+	<style>
+    
+		th, td {
+		text-align: center;
+		}
+		
+	</style>
+
+	
+	
+{% endblock %}
+
+{% block title %}
+	<title> Controle de Estoque </title>
+{% endblock %}
+
+
+{% block content %} 
+
+<!-- Page Content -->
+
+<div class="">
+
+		<div class=" row cardBox">
+			
+			<div class="col-3 card">
+				<div>
+					<div class="numbers">-</div>
+					<div class="cardName ">Entradas (Mês atual) </div>
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="enter-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="col-3 card">
+				<div>
+					<div class="numbers">-</div>
+					<div class="cardName" >Saidas (Mês atual)</div>
+					
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="cart-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="col-3 card">
+				<div>
+					<div class="numbers">-</div>
+					<div class="cardName">Pedidos de Retirada</div>
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="chatbubbles-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="col-3 card">
+				<div>
+					
+
+					<div class="numbers">-</div>
+					<div class="cardName">Estoque Total
+						<!-- <canvas  id="MedicamentoChart"></canvas> -->
+					</div>
+					
+
+					<div class="iconBx">
+						<ion-icon name="file-tray-stacked-outline"></ion-icon>
+						
+					</div>
+				
+					
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class=" details   ">
+			
+			<div>
+			<div class=" recentOrders ">
+				<div  class=" cardHeader" >
+					<!-- <div class="row"> -->
+
+						<h2 class="col-8">Controle de Validade</h2>
+						<div class="col-2">
+							<input placeholder="mês" type="text" id="inputMonths" name="validade" class="form-control order-form-input" list="addressList" />
+						</div>
+						<button  class="col-2 btn btn-success " type="button" onclick="rebuildTable()">Atualizar</button>
+				</div >
+				<table id="table-validade">
+
+				</table>
+				
+			</div>
+			</div>
+			<div>
+			<div class=" recentOrders ">
+				<div class="cardHeader">
+						<h2>Ordens Criticas</h2>
+					
+				</div>
+				<table id="automaticOrder">
+					
+				</table>
+
+				
+			</div>
+		</div>
+		</div>
+
+		<div class=" details row ">
+			
+
+				<div class="recentOrders">
+						<div class="cardHeader" >
+							<h2 class="col-2">Movimentações</h2>
+							<div class="col-4">
+								<div class="input-group date" data-date-format="dd/mm/yyyy">
+									<input id="btnAno" type="text" class="form-control" placeholder="Selecione o Ano">
+									
+
+									<div class="input-group-addon" >
+										
+									<!-- <span class="glyphicon glyphicon-th"></span> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<canvas  id="demandaChart"></canvas>
+				</div>
+				<div class="recentOrders">
+					<div class="">
+						<div class="">
+							<h2>Fechamento</h2>
+						</div>
+						<canvas  id="acumuladoChart"></canvas>
+					</div>
+				</div>
+				
+
+		</div>
+
+
+<!-- Page Content -->
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<!-- Plugin pro Datapicker novo -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+
+
+<script>
+ $('.input-group.date').datepicker({format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years"});
+
+
+</script>
+
+
+
+
+  
+
+{% endblock %}

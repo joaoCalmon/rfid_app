@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+
+
+
+<style>
+   
+    th, td {
+  text-align: center;
+  }
+    
+</style>
+
+
+{% endblock %}
+
+{% block title %}
+<title>Controle Tags</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+    {% if flag == 1 %}
+        <div class="alert alert-success text-center" role="alert">
+            Ordem gerada!
+        </div>
+    {% endif %}
+
+
+
+    <div class="details row">
+        <div class="recentOrders">
+            
+            <div class="cardHeader">
+                <h2>Ordens de Compra</h2>
+                
+                <div class="btn-group" data-toggle="buttons">
+                    <label style="background-color: whitesmoke" class="btn btn-info active">
+                        <input type="radio" name="status" value="all" > All
+                    </label>
+                    <label style="background-color: #8de02c;" class="btn btn-success">
+                        <input type="radio" name="status" value="active"> Recebido
+                    </label>
+                    <label style="background-color: #1795ce" class="btn btn-warning">
+                        <input type="radio" name="status" value="inactive" > Em Progresso
+                    </label>
+                    							
+                </div>
+                
+            </div>
+            
+
+            <table id="myTable">
+
+            </table>
+        </div>
+
+
+
+        <div class=" recentOrders" >
+            <div class="cardHeader" onclick="toggleTabela('divPedido')">
+                <div  >
+                    <h2>Gerar Novo Pedido</h2>
+                </div>
+            </div>
+
+      
+            {% if flag == 2 %}
+              <div class="alert alert-danger text-center" role="alert">
+              Usuário não encontrado!
+              </div>
+            {% endif %}
+              
+            <div  id="divPedido" style="display: none;" >
+            
+            <form class="form-signin" method="POST" action="/API-GET-POST/Ordens" target="iframeName">
+              
+      
+              <div class=" pt-4">
+                  <div class=" row">
+                      
+                      
+                          <div class="row mt-3 mx-4">
+      
+                              <div class="col-12 mt-4">
+                                  <h4>Caracteristicas</h4>
+                              </div>
+                              
+                              <div class="col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form1">Produto:</label>
+                                      <input type="text" id="form1" name="produto" class="form-control order-form-input" list="addressList" autocomplete="off" />
+                                      <datalist id="addressList">
+                                      </datalist>
+                                  </div>
+                              </div>
+                              <div class=" col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form2">Categoria:</label>
+                                      <input type="text" id="form2" name="categoria" class="form-control order-form-input" list="addressList2" autocomplete="off">
+                                      <datalist id="addressList2">
+                                          <option value="Medicamento">
+                                          <option value="Equipamento">
+                                          <option value="Material">
+                                      </datalist>
+                                  </div>
+                              </div>
+                              
+              
+                              <div class="col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form3">Quantidade:</label>
+                                      <input type="number" id="form3" name="quantidade" rel="txtTooltip" class="form-control order-form-input" data-toggle="tooltip" data-placement="bottom" title="Quantidade para atingir o limite minimo "/>
+                                      
+                                  </div>
+                              </div>
+                              <div class="col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form4">Data do Pedido:</label>
+                                      <input  type="text" id="form4" name="data" class="form-control order-form-input" disabled/>
+                                  </div>
+                              </div>
+                                  
+      
+      
+      
+                              <div class="col-12 mt-5">
+                                  <h4>Credenciais</h4>
+                              </div>
+      
+                              <div class="col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form5">Usuário:</label>
+                                      <input type="text" id="form5" name="usuario" class=" order-form-input" />
+                                      
+                                  </div>
+                              </div>
+                              <div class="col-sm-6 mt-2 ps-sm-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="form6">Senha:</label>
+                                      <input type="password" id="form6" name="senha" class=" order-form-input" />
+                                      
+                                  </div>
+                              </div>
+                              
+                              
+      
+                              <div class="mt-4 col-sm-12 mt-2 ps-sm-2">
+                                  <div >
+                                      <button class="btn btn-lg btn-primary btn-block" type="submit">Gerar</button>
+                                  </div>
+                              </div>
+                          </div>
+            
+                          
+                      </div>
+                  </div>
+              </div>
+            </form>
+        </div>
+      </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+
+<!-- Importe seus novos JS aq -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="{{ url_for('static', filename='js/ordens.js') }}"></script>
+
+
+
+
+{% endblock %}
+
+
+

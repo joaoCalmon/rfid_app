@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+
+  <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Icons from material.io -->
+
+  <!-- personal style css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+  {% block styles %}
+  {% endblock %}
+
+  {% block head %}
+  {% endblock %}
+
+  {% block title %}
+  {% endblock %}
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+
+  <div class="">
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="/">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Controle de Estoque</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/">
+                    <span class="icon">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li>
+              <a href="/analises">
+                  <span class="icon">
+                      <ion-icon name="lock-closed-outline"></ion-icon>
+                  </span>
+                  <span class="title">Metricas</span>
+              </a>
+          </li>
+
+            <li>
+                <a href="/localizar">
+                    <span class="icon">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </span>
+                    <span class="title">Localizar</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/movimentacoes">
+                    <span class="icon">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                    </span>
+                    <span class="title">Movimentações</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/ordens">
+                    <span class="icon">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </span>
+                    <span class="title">Ordens de Compra</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="/Limites">
+                    <span class="icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                    <span class="title">Limtes de Estoque</span>
+                </a>
+            </li>
+
+            
+
+            <li>
+                <a href="/login">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+          <div class="toggle">
+              <ion-icon name="menu-outline"></ion-icon>
+          </div>
+
+          <div >
+              <img src="/static/images/favicon_.png" alt="" class="d-inline-block" width="100" height="75">
+          </div>
+      </div>
+
+    
+ 
+
+  {% block content %}
+  {% endblock %}
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <script>
+
+      let list = document.querySelectorAll(".navigation li");
+
+      function activeLink() {
+        list.forEach((item) => {
+          item.classList.remove("hovered");
+        });
+        this.classList.add("hovered");
+      }
+
+      list.forEach((item) => item.addEventListener("mouseover", activeLink));
+
+      // Menu Toggle
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+    </script> 
+  {% block scripts %}
+  {% endblock %}
+
+</body>
+
+</html>
