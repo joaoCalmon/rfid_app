@@ -92,3 +92,35 @@ def movimentacoes_estoque():
 def metricas_estoque():
   return render_template('metricas.html')
 
+
+
+##ROTAS DO WEB SOCKET 
+
+@socketio.on('connect')
+def handle_connect():
+    print('Conectado ao cliente via WebSocket')
+
+@socketio.on('ativarBusca')
+def handle_disconnect(msg):
+    socketio.emit('ativarBusca',msg)
+
+@socketio.on('localizar')
+def handle_disconnect(msg):
+    socketio.emit('localizar',msg)
+
+@socketio.on('tags')
+def handle_disconnect(msg):
+    socketio.emit('tags',msg)
+
+@socketio.on('leituraTags')
+def handle_disconnect(msg):
+    socketio.emit('leituraTags',msg)
+
+@socketio.on('ativar')
+def handle_disconnect(msg):
+    socketio.emit('entrando',msg)
+
+@socketio.on('desativar')
+def handle_disconnect(msg):
+    socketio.emit('saindo',msg)
+
