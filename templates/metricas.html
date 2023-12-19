@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+{% endblock %}
+
+{% block title %}
+	<title> Análises </title>
+{% endblock %}
+
+
+{% block content %} 
+
+
+<div class=" cardBox " id = 'main-fileiras'>
+
+        <div class="row">
+
+            <div class="col-9">
+                <h4>Metricas de Análises</h4>
+            </div>
+
+            <div class="col-3">
+                <label class="form-label" for="form1">Categoria:</label>
+                <input type="text" id="form1" name="categoria" class=" target form-control order-form-input" list="addressList" autocomplete="off" />
+                <datalist id="addressList">
+                    <option value="Medicamento">
+                    <option value="Equipamento">
+                    <option value="Material">
+                </datalist>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-3 card">
+				<div>
+					<div class="numbers">1,504</div>
+					<div class="cardName">Total Itens</div>
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="eye-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="col-3 card">
+				<div>
+					<div class="numbers">80</div>
+					<div class="cardName">Stock Share</div>
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="cart-outline"></ion-icon>
+				</div>
+			</div>
+
+			<div class="col-3 card">
+				<div>
+					<div class="numbers">284</div>
+					<div class="cardName">Tipo de Produtos</div>
+				</div>
+
+				<div class="iconBx">
+					<ion-icon name="chatbubbles-outline"></ion-icon>
+				</div>
+			</div>
+
+    
+            <div class="cardBox col-3 ">
+                <div class="">
+                    <div class="">
+                        <h2></h2>
+                    </div>
+                    <canvas  id="MedicamentoChart"></canvas>
+                </div>
+            </div>
+
+
+        </div>
+       
+        
+        <div class="recentOrders row">
+
+				
+
+                <div class="">
+                    <label class="form-label" for="form1">Selecione o produto:</label>
+                    <input type="text" id="form2" name="produto" class=" target2 form-control order-form-input" list="addressList2" autocomplete="off"/>
+                    <datalist id="addressList2">
+                        
+                    </datalist>
+                </div>
+
+				<div class=" mt-4">
+					<div class="">
+						<div class="">
+							<h2>Entradas Anuais</h2>
+						</div>
+						<canvas  id="demandaChart"></canvas>
+					</div>
+				</div>
+
+        </div>
+        
+		
+</div>   
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="{{ url_for('static', filename='js/metricas.js') }}"></script>
+
+  
+
+{% endblock %}

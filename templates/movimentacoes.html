@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    
+{% endblock %}
+
+{% block title %}
+	<title> Movimentações do Estoque </title>
+{% endblock %}
+
+
+{% block content %} 
+
+
+<div class="details row">
+    <h2>Movimentações do Estoque</h2>    
+    <div class="row table table-hovered "> 
+    <div class="recentOrders col-12 " >
+        <div class="cardHeader" onclick="toggleTabela('divEntradas')">
+            <h4>Histórico Entradas</h4>
+        </div>
+        <div id="divEntradas" style="display: none;" >
+            <div id="Entradas" >
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row table table-hovered">
+    <div class="recentOrders col-12" >
+        <div class="cardHeader" onclick="toggleTabela('divSaidas')">
+            <h4>Histórico Saidas</h4>
+        </div>
+        <div id="divSaidas"  style="display: none;">
+            <div id="Saidas" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        
+		
+</div>   
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/movimentacoes.js') }}"></script>
+
+  
+
+{% endblock %}
